@@ -8,11 +8,155 @@
     <title>Document</title>
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+        body {
+            background-color: #888;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+        }
+        
+        header {
+            background-color: #0008;
+            height: 50px;
+            color: #fff;
+        }
+        
+        @keyframes StartBlur {
+            0% {
+                filter: blur(32px) brightness(32);
+            }
+            100% {
+                filter: blur(0) brightness(1);
+            }
+        }
+        
+        .video-area {
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+        
+        .bgmov {
+            position: absolute;
+            min-width: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            width: 177.77777778vh;
+            height: 56.25vw;
+            min-height: 100%;
+            min-width: 100%;
+            animation: StartBlur 2.8s ease-in-out;
+        }
+        
+        .btn {
+            position: relative;
+            display: inline-block;
+            width: 19.75%;
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+        }
+        
+        .btn__text {
+            position: absolute;
+            left: 0;
+            display: block;
+            height: 100%;
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        
+        .btn__text:nth-child(1) {
+            top: 0;
+        }
+        
+        .btn__text:nth-child(2) {
+            top: -100%;
+        }
+        
+        .btn:hover .btn__text:nth-child(1) {
+            top: 100%;
+        }
+        
+        .btn:hover .btn__text:nth-child(2) {
+            top: 0;
+        }
+        
+        .title {
+            color: #fff;
+            visibility: hidden;
+            margin-top: 20%;
+            position: relative;
+            font-size: 5rem;
+            text-align: center;
+            animation: TitleAnimation 5s ease-out;
+        }
+        
+        @keyframes TitleAnimation {
+            0% {
+                visibility: visible;
+                transform: scale(0);
+                filter: blur(0) drop-shadow(0 0 10px #fff);
+            }
+            90% {
+                opacity: 1;
+                filter: blur(0) drop-shadow(0 0 30px #fff);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+                filter: blur(10px) drop-shadow(0 0 15px #fff);
+            }
+        }
+    </style>
+    <div class="video-area">
+        <video class="bgmov" src="/images/bgmov.mp4" loop mute autoplay></video>
+    </div>
+    <header>
+        <div class="links">
+            <a href="./" class="btn">
+                <span class="btn__text">Discord<!-- default --></span>
 
+                <span class="btn__text">ぢすこ<!-- on hover --></span>
+            </a>
+            <a href="./" class="btn">
+                <span class="btn__text">JOIN US<!-- default --></span>
+
+                <span class="btn__text">参加方法<!-- on hover --></span>
+            </a>
+            <a href="./" class="btn">
+                <span class="btn__text">RULES<!-- default --></span>
+
+                <span class="btn__text">ルール<!-- on hover --></span>
+            </a>
+            <a href="./" class="btn">
+                <span class="btn__text">HOME<!-- default --></span>
+
+                <span class="btn__text">ホーム<!-- on hover --></span>
+            </a>
+            <a href="./" class="btn">
+                <span class="btn__text">DONATE<!-- default --></span>
+
+                <span class="btn__text">寄付<!-- on hover --></span>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="title">Welcome to Met's Server!!!</div>
+    </main>
 </body>
 
 </html>
