@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Welcome to Met's Server!</title>
+    <meta name="description" content="この欄descriptionって言うんだけどさ、マジ誰も見ないよね">
     <!-- CSS -->
     <link rel="stylesheet" href="/css/reset.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -18,10 +21,24 @@
             font-family: 'M PLUS Rounded 1c', sans-serif;
         }
         
+         ::selection {
+            background-color: #000;
+            color: #fff;
+        }
+        
         header {
-            background-color: #0008;
             height: 50px;
             color: #fff;
+        }
+        
+        .link {
+            background: linear-gradient(currentColor 0 0) var(--p, 0) 100% /var(--d, 0) 2px no-repeat;
+            transition: 0.4s, background-position 0s 0.4s;
+        }
+        
+        .link:hover {
+            --d: 100%;
+            --p: 100%;
         }
         
         @keyframes StartBlur {
@@ -102,7 +119,7 @@
             position: relative;
             font-size: 5rem;
             text-align: center;
-            animation: TitleAnimation 5s ease-out;
+            animation: TitleAnimation 7.5s ease-out;
         }
         
         @keyframes TitleAnimation {
@@ -111,7 +128,7 @@
                 transform: scale(0);
                 filter: blur(0) drop-shadow(0 0 10px #fff);
             }
-            90% {
+            50% {
                 opacity: 1;
                 filter: blur(0) drop-shadow(0 0 30px #fff);
             }
@@ -121,42 +138,165 @@
                 filter: blur(10px) drop-shadow(0 0 15px #fff);
             }
         }
+        
+        .no-copy {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .menu-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            color: #fff;
+            font-size: 1.5rem;
+            animation: MenuAnimation 7.5s ease-out;
+            border-radius: 0%;
+            font-size: 2rem;
+            transition: 3s;
+        }
+        
+        .is-opened {
+            transform: rotate(720deg);
+            background: #fff;
+            color: #000;
+        }
+        
+        @keyframes MenuAnimation {
+            0% {
+                transform: rotate(1800deg);
+                border-radius: 50%;
+            }
+            80% {
+                border-radius: 50%;
+            }
+            100% {
+                transform: rotate(0deg);
+                border-radius: 0%;
+            }
+        }
+        
+        .menu {
+            font-size: 2.5rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0008;
+        }
+        
+        .menu__item {
+            width: 100%;
+            height: auto;
+            padding: .5em 1em;
+            text-align: center;
+            color: #fff;
+            box-sizing: border-box;
+            text-transform: uppercase;
+        }
+        
+        .menu {
+            transform: translateX(100vw);
+            transition: 1.4s ease-in-out .25s;
+        }
+        
+        .menu.is-active {
+            transform: translateX(0);
+        }
+        
+        #stalker {
+            pointer-events: none;
+            position: fixed;
+            transform: translate(0, 0);
+            z-index: 999;
+        }
+        
+        @media screen and (min-width: 768px) and (max-width: 979px) {
+            /* 768px - 979px用（タブレット用）の記述 */
+        }
+        
+        @media screen and (min-width: 480px) and (max-width: 767px) {
+            /* 480px - 767px用（タブレット／スマートフォン用）の記述 */
+        }
+        
+        @media screen and (max-width: 479px) {
+            /* 479px以下用（スマートフォン用）の記述 */
+            .menu-btn {
+                animation: MenuAnimation 5.5s ease-out;
+                top: 15px;
+                right: 15px;
+                transition: 1.4s;
+            }
+            .menu__item {
+                font-size: 1.5rem;
+                padding: 1.5em 1em;
+            }
+            .menu {
+                transition: .9s ease-in-out .125s;
+            }
+            .title {
+                margin-top: 75%;
+                font-size: 1.5rem;
+                animation: TitleAnimation 7.5s ease-out;
+            }
+            .bgmov {
+                animation: StartBlur 1.8s ease-in-out;
+            }
+        }
     </style>
     <div class="video-area">
         <video class="bgmov" src="/images/bgmov.mp4" loop mute autoplay></video>
     </div>
     <header>
-        <div class="links">
-            <a href="./" class="btn">
-                <span class="btn__text">Discord<!-- default --></span>
-
-                <span class="btn__text">ぢすこ<!-- on hover --></span>
-            </a>
-            <a href="./" class="btn">
-                <span class="btn__text">JOIN US<!-- default --></span>
-
-                <span class="btn__text">参加方法<!-- on hover --></span>
-            </a>
-            <a href="./" class="btn">
-                <span class="btn__text">RULES<!-- default --></span>
-
-                <span class="btn__text">ルール<!-- on hover --></span>
-            </a>
-            <a href="./" class="btn">
-                <span class="btn__text">HOME<!-- default --></span>
-
-                <span class="btn__text">ホーム<!-- on hover --></span>
-            </a>
-            <a href="./" class="btn">
-                <span class="btn__text">DONATE<!-- default --></span>
-
-                <span class="btn__text">寄付<!-- on hover --></span>
-            </a>
+        <button type="button" class="menu-btn">
+            <ion-icon name="close" style="transform:rotate(45deg);"></ion-icon>
+        </button>
+        <div class="menu">
+            <div class="menu__item">
+                <a class="link" href="/">home</a>
+            </div>
+            <div class="menu__item">
+                <a class="link" href="/join">join</a>
+            </div>
+            <div class="menu__item">
+                <a class="link" href="/rules">rules</a>
+            </div>
+            <div class="menu__item">
+                <a class="link" href="//discord.mets-svr.com/">discord</a>
+            </div>
+            <div class="menu__item">
+                <a class="link" href="/other">other</a>
+            </div>
         </div>
     </header>
     <main>
-        <div class="title">Welcome to Met's Server!!!</div>
+        <div class="title no-copy">Welcome to Met's Server!!!</div>
     </main>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu').classList.toggle('is-active');
+        });
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.menu-btn').classList.toggle('is-opened');
+        });
+    </script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
 </body>
 
 </html>
